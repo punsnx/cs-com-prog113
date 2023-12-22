@@ -1,18 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    char m_str[12], n_str[12];
-    fgets(m_str,12,stdin);fgets(n_str,12,stdin);
-    long long M ,N ,GCD ,LCM;
-    M = atoll(m_str);N = atoll(n_str);
-    GCD = 0;
-    for (int i=0;i<=M||i<=N;i++){
-        if ((M % i == 0 && N % i == 0) && i > GCD){
-            GCD = i;
-        }
+int main()
+{   int n = 5,j=1,a,r,b=0;
+    for(int i = 1; i <= 4; i++){
+        a = n;
+        a = a >> 1;
+        r = (n - a) % 2;
+        n = a;
+        b = b + j * r;
+        j *= 10;
     }
-    LCM = M*N / GCD;
-    printf("GCD: %lld\nLCM: %lld",GCD,LCM);
+    printf("%d",b);
     return 0;
 }
