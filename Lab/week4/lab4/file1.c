@@ -1,22 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int toBinary(int n){
-    int binary=0,remain,i = 1;
-    while (n > 0){
-        remain = n % 2;
-        n = n / 2;
-        binary = binary + (remain * i);
-        i *= 10;
+int toBinary(n){
+    char binary[4];
+    int shifted_n;
+    short int remain;
+    for(int i = 3;i>=0;i--){
+        shifted_n = n >> 1;
+        remain = shifted_n % 2;
+        binary[i] = remain;
     }
     return binary;
 }
+
 int main()
 {
     char input[10];
-    int n,binary;
+    int n;
     fgets(input,10,stdin);
     n = atoi(input);
-    printf("Binary of %d is %04d",n,toBinary(n)); 
+    printf("Binary of %d is %s",n,toBinary(n)); 
     return 0;
 }
