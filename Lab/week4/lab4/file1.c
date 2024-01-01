@@ -1,24 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int toBinary(n){
-    char binary[4];
-    int shifted_n;
+int toBinary(int n){
+    int b=0,i=1;
     short int remain;
-    for(int i = 3;i>=0;i--){
-        shifted_n = n >> 1;
-        remain = shifted_n % 2;
-        binary[i] = remain;
+    while (n > 0){
+        remain = n % 2;
+        n = n >> 1;
+        b += remain * i;
+        i *= 10;
     }
-    return binary;
+    return b;
 }
 
 int main()
 {
-    char input[10];
+    char input[4];
     int n;
-    fgets(input,10,stdin);
+    fgets(input,4,stdin);
     n = atoi(input);
-    printf("Binary of %d is %s",n,toBinary(n)); 
+    printf("Binary number of %d is %04d.",n,toBinary(n));
     return 0;
 }
+
+// 0111 7
+// 0011 3
+// 0001 1
+// 0000 0
+
+// 0010 2
+// 0001 1
+// 0000 0x
