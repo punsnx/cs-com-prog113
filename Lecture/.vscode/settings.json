@@ -2,6 +2,18 @@
   "files.associations": {
     "math.h": "c",
     "stdio.h": "c",
-    "cstdio": "c"
+    "cstdio": "c",
+    "__threading_support": "c",
+    "clocale": "c",
+    "cstddef": "c",
+    "cstdlib": "c",
+    "cstring": "c",
+    "ctime": "c",
+    "cwchar": "c",
+    "__bit_reference": "c",
+    "__hash_table": "c",
+    "string": "c",
+    "string_view": "c",
+    "unordered_map": "c"
   }
 }
