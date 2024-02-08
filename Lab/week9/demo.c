@@ -7,7 +7,5 @@ int main() {
     for(k=2; k<10; k++){
         a[k] = a[k-1]+a[k-2];
     }
-    printf("%d",ptr[2]);
-
-    
+    printf("%d",ptr+3);
 }
