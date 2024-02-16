@@ -8,54 +8,39 @@ struct complex {
 char * add_complex(struct complex C, struct complex D)
 {
     static char sum_complex[20]={0};
-    char operator = '+';
-    int i;
     float cd1,cd2;
     cd1 = C.x + D.x;
     cd2 = C.y + D.y;
-    if(cd1 != 0)
-        sprintf(sum_complex,"%.1f",cd1);
-    if(cd2 != 0){
-        if(cd2 < 0){
-            operator = '-';
-            cd2 *= -1.0;
-        }
-        for(i=0;sum_complex[i];i++);
-        if(!i && operator == '-'){
-          sprintf(&sum_complex[i],"%c%.1fi",operator,cd2);
-        }else if(!i && operator == '+'){
-          sprintf(&sum_complex[i],"%.1fi",cd2);
-        }else{
-          sprintf(&sum_complex[i]," %c %.1fi",operator,cd2);
-        }
-    }
+    if (cd1 != 0 && cd2 != 0) {
+        if (cd2 > 0)
+            sprintf(sum_complex, "%.1f + %.1fi", cd1, cd2);
+        else
+            sprintf(sum_complex, "%.1f - %.1fi", cd1, -cd2);
+    } 
+    else if (cd1 == 0 && cd2 != 0) 
+      sprintf(sum_complex, "%.1fi", cd2);
+    else
+      sprintf(sum_complex, "%.1f", cd1);
+    
     return sum_complex;
 }
 
 char * multiply_complex(struct complex C, struct complex D)
 {
     static char multiply_complex[20]={0};
-    char operator = '+';
-    int i;
     float cd1,cd2;
     cd1 = C.x * D.x - C.y * D.y;
     cd2 = C.x * D.y + C.y * D.x;
-    if(cd1 != 0)
-        sprintf(multiply_complex,"%.1f",cd1);
-    if(cd2 != 0){
-        if(cd2 < 0){
-            operator = '-';
-            cd2 *= -1.0;
-        }
-        for(i=0;multiply_complex[i];i++);
-        if(!i && operator == '-'){
-          sprintf(&multiply_complex[i],"%c%.1fi",operator,cd2);
-        }else if(!i && operator == '+'){
-          sprintf(&multiply_complex[i],"%.1fi",cd2);
-        }else{
-          sprintf(&multiply_complex[i]," %c %.1fi",operator,cd2);
-        }
-    }
+    if (cd1 != 0 && cd2 != 0) {
+        if (cd2 > 0)
+            sprintf(multiply_complex, "%.1f + %.1fi", cd1, cd2);
+        else
+            sprintf(multiply_complex, "%.1f - %.1fi", cd1, -cd2);
+    } 
+    else if (cd1 == 0 && cd2 != 0) 
+      sprintf(multiply_complex, "%.1fi", cd2);
+    else
+      sprintf(multiply_complex, "%.1f", cd1);
     return multiply_complex;
 }
 
@@ -83,3 +68,4 @@ int main()
 
   return 0;
 }
+
