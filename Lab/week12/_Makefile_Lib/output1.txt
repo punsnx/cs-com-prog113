@@ -1,0 +1,6 @@
+rm -f *.o main.out
+gcc -g -c mylib.c
+gcc -g -c main.c
+gcc -g mylib.o main.o -o main.out
+./main.out
+Number: 120
