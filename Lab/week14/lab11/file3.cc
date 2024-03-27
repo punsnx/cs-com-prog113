@@ -26,7 +26,7 @@ Animal::Animal(int h, int e, int f)
 {
     limitStat();
 }
-void limit(int * p,int MAX)
+void limit(int *p,int MAX)
 {
     if(*p > MAX) *p = MAX;
     if(*p < 0) *p = 0;
