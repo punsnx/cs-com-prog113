@@ -32,7 +32,7 @@ int print_all_goods(){
         return count;
 
 }
-main(){
+int main(){
         char name[20];
         int price;
         Good *new_node;

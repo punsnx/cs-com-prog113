@@ -9,7 +9,7 @@ int inArray(int n,int *arr,int s){
 
 }
 int main() {
-    int np,i,max = INT8_MIN;
+    int np,i,max = INT_MIN;//INT8_MIN
     cin >> np;
     int poisoner[np],o=0,e=0;
     for(int tmp,i=0;i<np;i++){
