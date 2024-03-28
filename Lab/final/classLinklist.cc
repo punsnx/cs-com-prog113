@@ -184,5 +184,6 @@ int main(){
     cout << "a[1] = " << (*a)[1].getData() << endl;
     a->sort();
     a->print();
-    delete a,b,c;
+
+    delete a;
 }
