@@ -97,6 +97,28 @@ public:
         }
         return *this;
     }
+    Linklist &sort(){//SELECTION SORT
+        Node *cur=head,*swapPos,*checkPos,*tmp = new Node;
+        while(cur){//CHECK AND SWAP TO WALL
+            swapPos=checkPos=cur;
+            while(checkPos){//CHECK EACH UNTIL NULL
+                if(swapPos->getData() > checkPos->getData()){
+                    swapPos=checkPos;
+                }
+                checkPos=checkPos->getNext();
+            }
+            //SWAP PROCESS
+            *tmp = *cur;
+            *cur = *swapPos;
+            cur->setNext(tmp->getNext());
+            tmp->setNext(swapPos->getNext());
+            *swapPos = *tmp;
+            //INCREMENT NEXT
+            cur = cur->getNext();
+        }
+        delete tmp;
+        return *this;
+    }
     void print(){
         Node *cur = head;
         stringstream ss;
@@ -128,22 +150,24 @@ public:
         return *this;
     }
 };
-// int main(){
-//     // Node aa;
-//     Linklist a,b,c;
-//     a.addNodeSort(5);
-//     a.addNodeSort(1);
-//     a.addNodeSort(3).addNodeSort(5);
-//     b.addNodeSort(1).addNodeSort(1);
-//     c.addNodeSort(2);
-//     // a.deleteNode(3).deleteNode(5);
-//     a.print();
-//     b.print();
-//     c.print();
-//     a + b + c;
-//     a.print();
-//     cout << "a[1] = " << a[1].getData() << endl;
-//     a.deleteNodeR(5).deleteNodeR(1);
-//     a.print();
-//     cout << "a[1] = " << a[1].getData() << endl;
-// }
+int main(){
+    // Node aa;
+    Linklist a,b,c;
+    a.addNodeSort(5);
+    a.addNodeSort(1);
+    a.addNodeSort(3).addNodeSort(5);
+    b.addNodeSort(1).addNodeSort(1);
+    c.addNodeSort(2);
+    // a.deleteNode(3).deleteNode(5);
+    a.print();
+    b.print();
+    c.print();
+    a + b + c;
+    a.print();
+    cout << "a[1] = " << a[1].getData() << endl;
+    a.deleteNodeR(5).deleteNodeR(1);
+    a.print();
+    cout << "a[1] = " << a[1].getData() << endl;
+    a.sort();
+    a.print();
+}
