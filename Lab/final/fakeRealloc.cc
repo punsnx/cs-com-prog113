@@ -19,23 +19,27 @@ void *fakeReallocZ(void *ptrArr,size_t oldN,size_t newN,size_t varSize){
     return (void *)newPtr;
 }
 
-int main(){
-    int s = 5;
-    int *list = new int[s]();
-    for(int i = 0;i<s;i++){
-        list[i] = i+10;
-    }
-    for(int i = 0;i<s;i++){
-        cout << list[i] << " ";
-    }
-    cout << endl;
-    int ss = 5;
-    list = (int*)fakeReallocZ(list,s,(s+ss),sizeof(int));
+// int main(){
+    //for testing----------------------
 
-    for(int i = 0;i<s+ss;i++){
-        cout << list[i] << " ";
-    }
-    cout << endl;
+    // int s = 5;
+    // int *list = new int[s]();
+    // for(int i = 0;i<s;i++){
+    //     list[i] = i+10;
+    // }
+    // for(int i = 0;i<s;i++){
+    //     cout << list[i] << " ";
+    // }
+    // cout << endl;
+    // int ss = 5;
+    // list = (int*)fakeReallocZ(list,s,(s+ss),sizeof(int));
+
+    // for(int i = 0;i<s+ss;i++){
+    //     cout << list[i] << " ";
+    // }
+    // cout << endl;
+    
+    //for testing----------------------
 
     // int *newList = (int*)realloc(list,(s+ss)*sizeof(int)); //MUST NOT USE WITH new
 
@@ -68,4 +72,4 @@ int main(){
     // int a[] = {};
     // int *aa = a;
     // cout << sizeof(a) << endl;
-}
+// }
