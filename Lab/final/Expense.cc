@@ -18,7 +18,7 @@ protected:
 public:
     Expense(int d,int m,int y,double a){
         int leap = (m == 2) ? isLeapYear(year) : 0;
-        year=limit(y,1,INFINITY);
+        year=limit(y,1,INT_MAX);
         month=limit(m,1,12);
         date=limit(d,1,daysOfMonth[month-1]+leap);
         amount = a;
@@ -49,8 +49,8 @@ private:
             || (y == finalYear && y != year && m <= finalMonth)
             )
             {
-                cout << month << " " <<  m << " " << finalMonth << endl;
-                cout << year << " " <<  y << " " << finalYear << endl;
+                // cout << month << " " <<  m << " " << finalMonth << endl;
+                // cout << year << " " <<  y << " " << finalYear << endl;
                 return 1;
             }
         }
@@ -58,7 +58,7 @@ private:
     }
 public:
     InstallmentExpense(int d,int m,int y, double a,int n): Expense(d,m,y,a){
-        n_month = limit(n,0,INFINITY);
+        n_month = limit(n,0,INT_MAX);
     }
     double dailyExpense (int d,int m, int y) override{
         if (inRange(m,y)){
@@ -108,8 +108,15 @@ public:
 };
 
 int main() {
-    Expense *e1 = new InstallmentExpense(20,2,2024,31000,10);
+    Expense *e1 = new InstallmentExpense(20,1,2024,31000,10);
     double daily = e1->dailyExpense(20,3,2024);
-    double monthly = e1->monthlyExpense(12,2024);
+    double monthly = e1->monthlyExpense(1,2024);
+    cout << daily << " " << monthly << endl;
+
+    ExpenseAccount myAccount;
+    myAccount.addExpense(new Expense(20,1,2024,5000));
+    myAccount.addExpense(new InstallmentExpense(20,1,2024,31000,10));
+    daily = myAccount.getTotalDailyExpense(20,1,2024);
+    monthly = myAccount.getTotalMonthlyExpense(1,2024);
     cout << daily << " " << monthly << endl;
 }
